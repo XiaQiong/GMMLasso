@@ -31,5 +31,5 @@ start <- seq(1, by = 3, length = ncol(OGen) / 3)
 Gen <- lapply(start, function(i, OGen) OGen[,i:(i+2)], OGen = OGen)
 y = rowSums(scale(Gen[[1]]))+rowSums(scale(Gen[[2]]))+rnorm(500)
 index= sample(1:length(y),100)
-
+fit=GmmLasso::GMMLasso(y=y, Gen=Gen, index=index, K = NULL, returnK = F)
 }
